@@ -14,30 +14,16 @@ create ns
 kubectl create ns flux #This will allow us hold all our info in a single ns
 
 Install flux into the cluster
-export GHUSER=Lucki9999
-fluxctl install \
---git-user=${GHUSER} \
---git-email=${GHUSER}@users.noreply.github.com \
---git-url=git@github.com:${GHUSER}/cicd.git \
---git-path=flux/example-app/configmaps \
---git-branch=master \
---namespace=flux | kubectl apply -f -
 
 
-flux bootstrap git \
-  --url=https://github.com/Lucki9999/cicd.git \
-  --username=Lucki9999 \
-  --password=DevOps@9999 \
-  --token-auth=true \
-  --path=flux/example-app
-
-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
-
+export GITHUB_TOKEN=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
+Note: To generate token Github --> users --> settings --> Developers settings --> personal access token   
 flux bootstrap github \
   --owner=Lucki9999 \
   --repository=cicd \
   --path=flux/example-app \
   --branch=master \
+  --token-auth=true \
   --personal
   
 To setup a default ns for flux

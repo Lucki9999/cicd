@@ -18,11 +18,28 @@ export GHUSER=Lucki9999
 fluxctl install \
 --git-user=${GHUSER} \
 --git-email=${GHUSER}@users.noreply.github.com \
---git-url=git@github.com:${GHUSER}/flux-get-started \
---git-path=flux/example-app \
+--git-url=git@github.com:${GHUSER}/cicd.git \
+--git-path=flux/example-app/configmaps \
 --git-branch=master \
 --namespace=flux | kubectl apply -f -
 
+
+flux bootstrap git \
+  --url=https://github.com/Lucki9999/cicd.git \
+  --username=Lucki9999 \
+  --password=DevOps@9999 \
+  --token-auth=true \
+  --path=flux/example-app
+
+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
+
+flux bootstrap github \
+  --owner=Lucki9999 \
+  --repository=cicd \
+  --path=flux/example-app \
+  --branch=master \
+  --personal
+  
 To setup a default ns for flux
 export FLUX_FORWARD_NAMESPACE="flux"
 To display logs

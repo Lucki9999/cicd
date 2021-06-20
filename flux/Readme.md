@@ -11,19 +11,20 @@ flux check --pre
 #Getting started
 ```sh
 create ns 
-kubectl create ns flux #This will allow us hold all our info in a single ns
+kubectl create ns flux-system #This will allow us hold all our info in a single ns
 
 Install flux into the cluster
 
 
-export GITHUB_TOKEN=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
+export GITHUB_TOKEN=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
 Note: To generate token Github --> users --> settings --> Developers settings --> personal access token   
+
 flux bootstrap github \
   --owner=Lucki9999 \
   --repository=cicd \
-  --path=flux/example-app \
+  --path=flux/environments/staging \
   --branch=master \
-  --token-auth=true \
+  --token-auth \
   --personal
   
 To setup a default ns for flux

@@ -32,6 +32,8 @@ export FLUX_FORWARD_NAMESPACE="flux"
 To display logs
 kubectl -n flux logs flux-74df595c5-6m69k
 
+#To reconcile away from flux interval
+flux reconcile kustomization flux-system --with-source
 
 To authenticate flux to Git repo
 Generate SSH keys
@@ -41,5 +43,7 @@ Go to repo --> settings --> Deploy keys --> add the ssh keys given in previous s
 Here flux will talk to Git repo every 5 mins and sync the kubernetes cluster
 #To sync the flux ssh keys manually
 fluxctl sync
+
+
 
 ```
